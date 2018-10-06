@@ -71,6 +71,7 @@ public class VistaCliente extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
 
         jDialog1.getContentPane().setLayout(null);
 
@@ -274,6 +275,10 @@ public class VistaCliente extends javax.swing.JFrame {
         getContentPane().add(jButton5);
         jButton5.setBounds(650, 360, 40, 32);
 
+        jLabel14.setText("CLIENTES");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(60, 10, 60, 16);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -339,6 +344,7 @@ public class VistaCliente extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel11;
     public javax.swing.JLabel jLabel12;
     public javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel4;
