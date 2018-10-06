@@ -5,6 +5,9 @@
  */
 package gestionbanco;
 
+import controlador.ControladorInicial;
+import vista.VistaInicial;
+
 /**
  *
  * @author carde
@@ -16,6 +19,7 @@ public class GestionBanco {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new ControladorInicial(new VistaInicial()).Iniciar();
     }
     
 }
