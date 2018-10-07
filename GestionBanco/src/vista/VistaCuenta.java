@@ -182,14 +182,14 @@ public class VistaCuenta extends javax.swing.JFrame {
     public javax.swing.JButton jButton2;
     public javax.swing.JButton jButton3;
     public javax.swing.JButton jButton4;
-    private javax.swing.JCheckBox jCheckBox1;
+    public javax.swing.JCheckBox jCheckBox1;
     public javax.swing.JFormattedTextField jFormattedTextField3;
     public javax.swing.JFormattedTextField jFormattedTextField4;
     public javax.swing.JFormattedTextField jFormattedTextField6;
     public javax.swing.JFormattedTextField jFormattedTextField7;
     public javax.swing.JFormattedTextField jFormattedTextField8;
     public javax.swing.JFormattedTextField jFormattedTextField9;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel5;
     public javax.swing.JLabel jLabel6;
