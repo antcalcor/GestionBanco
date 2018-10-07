@@ -43,6 +43,7 @@ public class VistaSucursal extends javax.swing.JFrame {
         jFormattedTextField4 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(750, 480));
         getContentPane().setLayout(null);
 
         jButton1.setText("Añadir");
@@ -161,6 +162,6 @@ public class VistaSucursal extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel4;
     public javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

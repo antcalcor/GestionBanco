@@ -361,7 +361,7 @@ public class VistaCliente extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel9;
     public javax.swing.JRadioButton jRadioButton1;
     public javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
