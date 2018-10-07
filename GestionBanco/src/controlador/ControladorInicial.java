@@ -57,52 +57,52 @@ public class ControladorInicial implements ActionListener, MouseListener {
         vi.jButton3.addActionListener(this);
         vi.jButton4.setActionCommand("EMPLEADO");
         vi.jButton4.addActionListener(this);
-        
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-         
-        switch(accionesVi.valueOf(e.getActionCommand())){
-            
+
+        switch (accionesVi.valueOf(e.getActionCommand())) {
+
             case CLIENTE:
-                
+
                 vi.setVisible(false);
-                new ControladorCliente (vc).Iniciar();
-                
+                new ControladorCliente(vc).Iniciar();
+
                 break;
-                
+
             case CUENTA:
-                
+
                 vi.setVisible(false);
-                new ControladorCuenta (vcu).Iniciar();
-                
+                new ControladorCuenta(vcu).Iniciar();
+
                 break;
-                
+
             case SUCURSAL:
-                
+
                 vi.setVisible(false);
-        {
-            try {
-                new ControladorSucursal (vs).Iniciar();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControladorInicial.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-                
+                 {
+                    try {
+                        new ControladorSucursal(vs).Iniciar();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
                 break;
-            
+
             case EMPLEADO:
-                
+
                 vi.setVisible(false);
-        {
-            try {
-                new ControladorEmpleado (ve).Iniciar();
-            } catch (SQLException ex) {
-                Logger.getLogger(ControladorInicial.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-                
+                 {
+                    try {
+                        new ControladorEmpleado(ve).Iniciar();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
                 break;
         }
     }

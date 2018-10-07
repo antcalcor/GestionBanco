@@ -19,6 +19,21 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MetodoEmpleado extends Conexion {
 
+        public void nuevoEmpleado (String dni){
+        
+        try{
+            Connection conn = this.getConnection();
+            String q = "{call INSERTAR_EMPLEADO ('" + dni + "'," + dni + ",'" + dni + ",'" + dni + ",'" + dni + ")}";
+            CallableStatement storedProc = conn.prepareCall(q);
+            storedProc.execute();
+            storedProc.close();
+            conn.close();
+            
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
     public DefaultTableModel cogerEmpleadosBBDD() throws SQLException{
         
         PreparedStatement ps = null;

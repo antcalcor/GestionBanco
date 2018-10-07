@@ -79,7 +79,7 @@ public class ControladorSucursal implements ActionListener, MouseListener {
             case VOLVER:
 
                 vs.setVisible(false);
-                new ControladorInicial (vi).Iniciar();
+                new ControladorInicial(vi).Iniciar();
 
                 break;
 
@@ -89,31 +89,29 @@ public class ControladorSucursal implements ActionListener, MouseListener {
                 String calle = vs.jFormattedTextField2.getText();
                 int codPost = Integer.parseInt(vs.jFormattedTextField3.getText());
                 String ciudad = vs.jFormattedTextField4.getText();
-                
+
                 ms.nuevaSucursal(codSuc, calle, codPost, ciudad);
-                
+
                 vs.jFormattedTextField1.setText("");
                 vs.jFormattedTextField2.setText("");
                 vs.jFormattedTextField3.setText("");
                 vs.jFormattedTextField4.setText("");
-                
-        {
-            try {
-                vs.jTable1.setModel(ms.cogerSucursalesBBDD());
-            } catch (SQLException ex) {
-                Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-                
+
+                 {
+                    try {
+                        vs.jTable1.setModel(ms.cogerSucursalesBBDD());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
                 break;
 
             case BORRAR:
 
-
                 break;
-                
-            case MODIFICAR:
 
+            case MODIFICAR:
 
                 break;
         }
@@ -130,7 +128,7 @@ public class ControladorSucursal implements ActionListener, MouseListener {
                 vs.jFormattedTextField2.setText(String.valueOf(vs.jTable1.getValueAt(fila, 1)));
                 vs.jFormattedTextField3.setText(String.valueOf(vs.jTable1.getValueAt(fila, 2)));
                 vs.jFormattedTextField4.setText(String.valueOf(vs.jTable1.getValueAt(fila, 3)));
-            
+
             }
 
         }
@@ -139,29 +137,29 @@ public class ControladorSucursal implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        
+
         presionarJTable1(e);
-        
+
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-         
+
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-         
+
     }
 
 }
