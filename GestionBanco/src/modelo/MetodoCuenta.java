@@ -28,7 +28,7 @@ public class MetodoCuenta extends Conexion {
 
         int i = 0;
 
-        String q = "SELECT COUNT(*) c FROM T_CUENTA";
+        String q = "SELECT COUNT(COD_CUENTA) c FROM T_CUENTA";
         ps = conn.prepareStatement(q);
         rs = ps.executeQuery();
         rs.next();

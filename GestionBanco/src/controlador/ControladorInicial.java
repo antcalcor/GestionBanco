@@ -39,7 +39,7 @@ public class ControladorInicial implements ActionListener, MouseListener {
         this.vi = vi;
     }
 
-    public void Iniciar() {
+    public void Iniciar(){
 
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -75,7 +75,13 @@ public class ControladorInicial implements ActionListener, MouseListener {
             case CUENTA:
 
                 vi.setVisible(false);
+        {
+            try {
                 new ControladorCuenta(vcu).Iniciar();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorInicial.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
                 break;
 

@@ -44,11 +44,11 @@ public class MetodoEmpleado extends Conexion {
 
         int i = 0;
 
-        String q = "SELECT COUNT(*) c FROM T_EMPLEADO";
+        String q = "SELECT COUNT(DNI) c FROM T_EMPLEADO";
         ps = conn.prepareStatement(q);
         rs = ps.executeQuery();
         rs.next();
-        int filas = rs.getInt(1);
+        int filas = rs.getInt("c");
         rs.close();
         ps.close();
 
@@ -62,7 +62,7 @@ public class MetodoEmpleado extends Conexion {
 
             datos[i][0] = rs.getString("DNI");
             datos[i][1] = rs.getString("NOMBRE");
-            datos[i][2] = rs.getString("FECHA_NAC");
+            datos[i][2] = rs.getDate("FECHA_NAC").toLocalDate().toString();
             datos[i][3] = rs.getString("SEXO");
             datos[i][4] = rs.getString("COD_SUCUR");
 
