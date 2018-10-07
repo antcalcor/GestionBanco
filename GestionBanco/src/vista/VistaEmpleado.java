@@ -46,6 +46,7 @@ public class VistaEmpleado extends javax.swing.JFrame {
         jFormattedTextField5 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(750, 480));
         getContentPane().setLayout(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -71,16 +72,12 @@ public class VistaEmpleado extends javax.swing.JFrame {
         jLabel2.setText("Nombre");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 260, 50, 16);
-
-        jFormattedTextField2.setText("jFormattedTextField1");
         getContentPane().add(jFormattedTextField2);
         jFormattedTextField2.setBounds(20, 280, 340, 20);
 
         jLabel1.setText("DNI");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(20, 310, 90, 16);
-
-        jFormattedTextField1.setText("jFormattedTextField1");
         getContentPane().add(jFormattedTextField1);
         jFormattedTextField1.setBounds(20, 330, 150, 20);
 
@@ -103,24 +100,18 @@ public class VistaEmpleado extends javax.swing.JFrame {
         jLabel3.setText("Fecha Nacimiento");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(20, 360, 110, 16);
-
-        jFormattedTextField3.setText("jFormattedTextField1");
         getContentPane().add(jFormattedTextField3);
         jFormattedTextField3.setBounds(20, 380, 150, 20);
 
         jLabel4.setText("Sexo");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(440, 260, 90, 16);
-
-        jFormattedTextField4.setText("jFormattedTextField1");
         getContentPane().add(jFormattedTextField4);
         jFormattedTextField4.setBounds(440, 280, 150, 20);
 
         jLabel5.setText("Sucursal");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(440, 320, 90, 16);
-
-        jFormattedTextField5.setText("jFormattedTextField1");
         getContentPane().add(jFormattedTextField5);
         jFormattedTextField5.setBounds(440, 340, 150, 20);
 
@@ -179,6 +170,6 @@ public class VistaEmpleado extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel4;
     public javax.swing.JLabel jLabel5;
     public javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

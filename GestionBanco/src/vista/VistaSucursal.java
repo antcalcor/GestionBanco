@@ -81,32 +81,24 @@ public class VistaSucursal extends javax.swing.JFrame {
         jLabel1.setText("Codigo Sucursal");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(460, 270, 110, 16);
-
-        jFormattedTextField1.setText("jFormattedTextField1");
         getContentPane().add(jFormattedTextField1);
         jFormattedTextField1.setBounds(460, 290, 150, 20);
 
         jLabel2.setText("Calle");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(40, 270, 110, 16);
-
-        jFormattedTextField2.setText("jFormattedTextField1");
         getContentPane().add(jFormattedTextField2);
         jFormattedTextField2.setBounds(40, 290, 350, 20);
 
         jLabel3.setText("Codigo Postal");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(40, 320, 110, 16);
-
-        jFormattedTextField3.setText("jFormattedTextField1");
         getContentPane().add(jFormattedTextField3);
         jFormattedTextField3.setBounds(40, 340, 150, 20);
 
         jLabel4.setText("Ciudad");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(40, 370, 110, 16);
-
-        jFormattedTextField4.setText("jFormattedTextField1");
         getContentPane().add(jFormattedTextField4);
         jFormattedTextField4.setBounds(40, 390, 150, 20);
 

@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -83,16 +85,33 @@ public class ControladorSucursal implements ActionListener, MouseListener {
 
             case AGREGAR:
 
-
+                int codSuc = Integer.parseInt(vs.jFormattedTextField1.getText());
+                String calle = vs.jFormattedTextField2.getText();
+                int codPost = Integer.parseInt(vs.jFormattedTextField3.getText());
+                String ciudad = vs.jFormattedTextField4.getText();
+                
+                ms.nuevaSucursal(codSuc, calle, codPost, ciudad);
+                
+                vs.jFormattedTextField1.setText("");
+                vs.jFormattedTextField2.setText("");
+                vs.jFormattedTextField3.setText("");
+                vs.jFormattedTextField4.setText("");
+                
+        {
+            try {
+                vs.jTable1.setModel(ms.cogerSucursalesBBDD());
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+                
                 break;
 
-            //PARA BORRAR UN CLIENTE
             case BORRAR:
 
 
                 break;
-
-            //PARA MODIFICAR UN CLIENTE
+                
             case MODIFICAR:
 
 
@@ -107,9 +126,11 @@ public class ControladorSucursal implements ActionListener, MouseListener {
             int fila = this.vs.jTable1.rowAtPoint(e.getPoint());
             if (fila > -1) {
 
-                vs.jFormattedTextField4.setText(String.valueOf(this.vs.jTable1.getValueAt(fila, 0)));
-                //pIni.jTextField1.setText(String.valueOf(this.vs.jTable1.getValueAt(fila, 1)));
-                //pIni.campoPrecio.setText(String.valueOf(this.vs.jTable1.getValueAt(fila, 2)));
+                vs.jFormattedTextField1.setText(String.valueOf(vs.jTable1.getValueAt(fila, 0)));
+                vs.jFormattedTextField2.setText(String.valueOf(vs.jTable1.getValueAt(fila, 1)));
+                vs.jFormattedTextField3.setText(String.valueOf(vs.jTable1.getValueAt(fila, 2)));
+                vs.jFormattedTextField4.setText(String.valueOf(vs.jTable1.getValueAt(fila, 3)));
+            
             }
 
         }
@@ -118,27 +139,29 @@ public class ControladorSucursal implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        presionarJTable1(e);
+        
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         
     }
 
 }

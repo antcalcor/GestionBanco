@@ -17,23 +17,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author carde
  */
-public class MetodoSucursal {
-    
-    Conexion db;
-    
-    public MetodoSucursal (Conexion db){
-        this.db=db;
-    }
-    
-    public MetodoSucursal (){
-        
-    }
+public class MetodoSucursal extends Conexion{
     
     public void nuevaSucursal (int codSucur,String calle,int codPost,String ciudad){
         
         try{
-            
-            Connection conn = db.getConexion();
+            Connection conn = this.getConnection();
             String q = "{call INSERTAR_SUCURSAL ('" + codSucur + "'," + calle + ",'" + codPost + ",'" + ciudad + ")}";
             CallableStatement storedProc = conn.prepareCall(q);
             storedProc.execute();
@@ -49,7 +38,7 @@ public class MetodoSucursal {
         
         PreparedStatement ps = null;
         ResultSet rs = null;
-        Connection conn = db.getConexion();
+        Connection conn = this.getConnection();
         String[] columnas = {"Codigo Sucursal","Calle","Codigo Postal","Ciudad"};
         DefaultTableModel tablemodel = new DefaultTableModel();
         
@@ -59,7 +48,7 @@ public class MetodoSucursal {
         ps = conn.prepareStatement(q);
         rs = ps.executeQuery();
         rs.next();
-        int filas = rs.getInt("c");
+        int filas = rs.getInt(1);
         rs.close();
         ps.close();
         
@@ -71,9 +60,9 @@ public class MetodoSucursal {
         
         while (rs.next()){
             
-            datos[i][0] = rs.getInt("COD_SUCUR");
+            datos[i][0] = rs.getString("COD_SUCUR");
             datos[i][1] = rs.getString("CALLE");
-            datos[i][2] = rs.getInt("COD_POST");
+            datos[i][2] = rs.getString("COD_POST");
             datos[i][3] = rs.getString("CIUDAD");
             
             i++;

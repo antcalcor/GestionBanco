@@ -9,6 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -79,14 +82,26 @@ public class ControladorInicial implements ActionListener, MouseListener {
             case SUCURSAL:
                 
                 vi.setVisible(false);
+        {
+            try {
                 new ControladorSucursal (vs).Iniciar();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorInicial.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 
                 break;
             
             case EMPLEADO:
                 
                 vi.setVisible(false);
+        {
+            try {
                 new ControladorEmpleado (ve).Iniciar();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorInicial.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 
                 break;
         }

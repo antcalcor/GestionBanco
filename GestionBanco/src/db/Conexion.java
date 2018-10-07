@@ -14,36 +14,33 @@ import java.sql.SQLException;
  * @author carde
  */
 public class Conexion {
-    
-        private static final String DB_DRIVER ="oracle.jdbc.driver.OracleDriver";
-            private static final String DB_CONNECTION="jdbc:oracle:thin:@localhost:1521:xe";
-            private static final String DB_USER="BANCO";
-            private static final String DB_PASS="BANCO";
             
-            public Connection getConexion()
-            {
-                Connection dbconnection=null;
-                try
-                {
-                    Class.forName(DB_DRIVER);
-                }
-                catch(ClassNotFoundException e)
-                {
-                    
-                    System.out.println(e.getMessage());
-                }
-                
-                try
-                {
-                    dbconnection=DriverManager.getConnection(DB_CONNECTION,DB_USER,DB_PASS);
-                    return dbconnection;
-                }
-                catch(SQLException e)
-                {
-                    
-                    System.out.println(e.getMessage());
-                }
-                return dbconnection;
+              /* DATOS PARA LA CONEXION */
+  private String login = "BANCO";
+  private String password = "BANCO";
+  private String url = "jdbc:oracle:thin:@localhost:1521:xe";
+  private Connection conn = null;
+//___________________________________________________________________________________ 
+   public Conexion(){
+      try{
+         //obtenemos el driver de para mysql
+         Class.forName("oracle.jdbc.driver.OracleDriver");
+         //com.mysql.cj.jdbc.Driver
+         //obtenemos la conexión
+         conn = DriverManager.getConnection(url,login,password);
+         if (conn!=null){
+            System.out.println("OK base de datos lista");
+         }
+      }catch(SQLException e){
+         System.out.println(e);
+      }catch(ClassNotFoundException e){
+         System.out.println(e);
+      }
+    }
+//___________________________________________________________________________________ 
+    public Connection getConnection()
+    {
+        return this.conn;
     }
     
 }
