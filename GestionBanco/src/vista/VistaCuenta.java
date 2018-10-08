@@ -125,6 +125,7 @@ public class VistaCuenta extends javax.swing.JFrame {
         jLabel9.setBounds(450, 290, 110, 16);
 
         jFormattedTextField9.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField9.setEnabled(false);
         getContentPane().add(jFormattedTextField9);
         jFormattedTextField9.setBounds(70, 410, 140, 20);
 

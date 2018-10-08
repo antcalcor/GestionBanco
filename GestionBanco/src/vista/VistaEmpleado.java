@@ -103,7 +103,7 @@ public class VistaEmpleado extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(20, 360, 110, 16);
 
-        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
         getContentPane().add(jFormattedTextField3);
         jFormattedTextField3.setBounds(20, 380, 150, 20);
 

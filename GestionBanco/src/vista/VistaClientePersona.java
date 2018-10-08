@@ -141,6 +141,7 @@ public class VistaClientePersona extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 610, 210));
 
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField1.setEnabled(false);
         getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 150, -1));
 
         jLabel1.setText("Codigo Cliente");
@@ -149,9 +150,6 @@ public class VistaClientePersona extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 50, -1));
-
-        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        jFormattedTextField3.setText("");
         getContentPane().add(jFormattedTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 150, -1));
 
         jLabel3.setText("Sexo");
@@ -163,7 +161,7 @@ public class VistaClientePersona extends javax.swing.JFrame {
         jLabel5.setText("Telefono");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 60, -1));
 
-        jFormattedTextField7.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        jFormattedTextField7.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
         getContentPane().add(jFormattedTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 160, -1));
 
         jLabel9.setText("Fecha Nacimiento");
