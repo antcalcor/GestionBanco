@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
@@ -28,7 +29,9 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
     public VistaClienteOrg vco = new VistaClienteOrg();
     public MetodoClienteOrg mco = new MetodoClienteOrg();
     public VistaInicial vi = new VistaInicial();
+    public MetodoClientePersona mcp = new MetodoClientePersona();
     public MetodoDireccion mDirec = new MetodoDireccion();
+    public int codigo = -1;
 
     public ControladorClienteOrg(VistaClienteOrg vco) {
 
@@ -38,7 +41,7 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
 
     public enum accionesClienteOrg {
 
-        AGREGAR, MODIFICAR, BORRAR, VOLVER, DIRECCIONES;
+        AGREGAR, MODIFICAR, BORRAR, VOLVER, DIRECCIONES, AGREGAR_D, MODIFICAR_D, BORRAR_D, VOLVER_D;
 
     }
 
@@ -57,8 +60,6 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
 
         vco.jTable1.addMouseListener(this);
         vco.jTable1.setModel(new DefaultTableModel());
-        vco.jTable2.addMouseListener(this);
-        vco.jTable2.setModel(new DefaultTableModel());
         vco.jTable3.addMouseListener(this);
         vco.jTable3.setModel(new DefaultTableModel());
 
@@ -70,6 +71,14 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
         vco.jButton3.addActionListener(this);
         vco.jButton4.setActionCommand("VOLVER");
         vco.jButton4.addActionListener(this);
+        vco.jButton6.setActionCommand("AGREGAR_D");
+        vco.jButton6.addActionListener(this);
+        vco.jButton7.setActionCommand("MODIFICAR_D");
+        vco.jButton7.addActionListener(this);
+        vco.jButton8.setActionCommand("BORRAR_D");
+        vco.jButton8.addActionListener(this);
+        vco.jButton9.setActionCommand("VOLVER_D");
+        vco.jButton9.addActionListener(this);
         vco.jButton5.setActionCommand("DIRECCIONES");
         vco.jButton5.addActionListener(this);
 
@@ -102,7 +111,35 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
 
             case DIRECCIONES:
 
-                //vco.jTable3.setModel(mDirec.cogerDireccionesBBDD("DIREC_ORG"));
+                if (codigo != -1) {
+                    vco.setVisible(false);
+                    vco.jDialog1.setVisible(true);
+
+                    try {
+                        vco.jTable3.setModel(mDirec.cogerDireccionesBBDD(codigo, "T_ORGANIZACION"));
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorClientePersona.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+                break;
+            case AGREGAR_D:
+
+                break;
+
+            case MODIFICAR_D:
+
+                break;
+
+            case BORRAR_D:
+                break;
+
+            case VOLVER_D:
+
+                vco.jDialog1.setVisible(false);
+                vco.setVisible(true);
+                vco.jTable3.setModel(new DefaultTableModel());
+
                 break;
         }
     }
@@ -114,13 +151,35 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
             int fila = this.vco.jTable1.rowAtPoint(e.getPoint());
             if (fila > -1) {
 
-                int cod_cliente = Integer.parseInt(String.valueOf(vco.jTable1.getValueAt(fila, 0)));
+                codigo = Integer.parseInt(String.valueOf(vco.jTable1.getValueAt(fila, 0)));
                 vco.jFormattedTextField1.setText(String.valueOf(vco.jTable1.getValueAt(fila, 0)));
                 vco.jFormattedTextField2.setText(String.valueOf(vco.jTable1.getValueAt(fila, 1)));
-                vco.jFormattedTextField5.setText(String.valueOf(vco.jTable1.getValueAt(fila, 2)));
-                vco.jFormattedTextField4.setText(String.valueOf(vco.jTable1.getValueAt(fila, 3)));
+                vco.jFormattedTextField4.setText(String.valueOf(vco.jTable1.getValueAt(fila, 2)));
+                vco.jFormattedTextField6.setText(String.valueOf(vco.jTable1.getValueAt(fila, 3)));
+                vco.jFormattedTextField11.setText(String.valueOf(vco.jTable1.getValueAt(fila, 4)));
 
-                vco.jTable2.setModel(mDirec.cogerDireccionesBBDD(cod_cliente, "T_ORGANIZACION"));
+                ArrayList<Integer> prueba = mcp.cogerTelefonosBBDD(codigo, "T_ORGANIZACION");
+
+                vco.jFormattedTextField12.setText(String.valueOf(prueba.get(0)));
+                vco.jFormattedTextField13.setText(String.valueOf(prueba.get(1)));
+                vco.jFormattedTextField5.setText(String.valueOf(prueba.get(2)));
+
+            }
+
+        }
+
+    }
+
+    private void presionarJTable3(java.awt.event.MouseEvent e) throws SQLException {
+
+        if (e.getButton() == 1)// boton izquierdo
+        {
+            int fila = this.vco.jTable3.rowAtPoint(e.getPoint());
+            if (fila > -1) {
+
+                vco.jFormattedTextField10.setText(String.valueOf(vco.jTable3.getValueAt(fila, 0)));
+                vco.jFormattedTextField9.setText(String.valueOf(vco.jTable3.getValueAt(fila, 1)));
+                vco.jFormattedTextField8.setText(String.valueOf(vco.jTable3.getValueAt(fila, 2)));
 
             }
 
@@ -130,13 +189,14 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
         try {
             presionarJTable1(e);
+            presionarJTable3(e);
         } catch (SQLException ex) {
             Logger.getLogger(ControladorClienteOrg.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -144,17 +204,17 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
 }

@@ -48,7 +48,7 @@ public class MetodoClienteOrg extends Conexion {
             datos[i][1] = rs.getString("NOMBRE");
             datos[i][2] = rs.getString("TIPO_ORG");
             datos[i][3] = rs.getString("REPRESENTANTE");
-            datos[i][4] = rs.getShort("NUM_EMPLE");
+            datos[i][4] = rs.getString("NUM_EMPLE");
 
             i++;
         }

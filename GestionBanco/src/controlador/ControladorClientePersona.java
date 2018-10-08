@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
@@ -81,7 +82,6 @@ public class ControladorClientePersona implements ActionListener, MouseListener 
         vcp.jButton5.addActionListener(this);
 
         vcp.jTable1.setModel(mcp.cogerClientesPersonaBBDD());
-        //vcp.jTable3.setModel(mDirec.cogerDireccionesBBDD("DIREC_PERS"));
 
     }
 
@@ -157,6 +157,12 @@ public class ControladorClientePersona implements ActionListener, MouseListener 
                 vcp.jFormattedTextField7.setText(String.valueOf(vcp.jTable1.getValueAt(fila, 2)));
                 vcp.jFormattedTextField3.setText(String.valueOf(vcp.jTable1.getValueAt(fila, 3)));
 
+                ArrayList<Integer> prueba = mcp.cogerTelefonosBBDD(codigo,"T_PERSONA");
+                
+                vcp.jFormattedTextField12.setText(String.valueOf(prueba.get(0)));
+                vcp.jFormattedTextField13.setText(String.valueOf(prueba.get(1)));
+                vcp.jFormattedTextField5.setText(String.valueOf(prueba.get(2)));
+                
             }
 
         }

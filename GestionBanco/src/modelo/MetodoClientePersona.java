@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -57,6 +58,29 @@ public class MetodoClientePersona extends Conexion{
         
         return tablemodel;
 
+    }
+    
+    public ArrayList cogerTelefonosBBDD(int cod_cliente,String tipo_cliente) throws SQLException{
+        
+        String q = "SELECT TT.* FROM " + tipo_cliente + " T,TABLE (T.TELEF) TT WHERE T.COD_CLIENTE  = " + cod_cliente;
+        
+        ArrayList<Integer> tlf = new ArrayList<Integer>();       
+        
+        Connection conn = this.getConnection();
+        PreparedStatement ps = conn.prepareStatement(q);
+        ResultSet rs = ps.executeQuery(q);
+        
+        while(rs.next()){
+            
+            tlf.add(rs.getInt(1));
+            
+        }
+        
+        rs.close();
+        ps.close();
+        
+        return tlf;
+        
     }
 
 }
