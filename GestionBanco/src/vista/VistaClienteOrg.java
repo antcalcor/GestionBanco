@@ -303,7 +303,7 @@ public class VistaClienteOrg extends javax.swing.JFrame {
     public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JScrollPane jScrollPane4;
     public javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    public javax.swing.JTable jTable2;
     public javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
 }

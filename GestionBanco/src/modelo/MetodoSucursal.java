@@ -27,7 +27,7 @@ public class MetodoSucursal extends Conexion{
             CallableStatement storedProc = conn.prepareCall(q);
             storedProc.execute();
             storedProc.close();
-            conn.close();
+            
             
         }catch (SQLException e){
             e.printStackTrace();
@@ -70,7 +70,7 @@ public class MetodoSucursal extends Conexion{
         tablemodel.setDataVector(datos, columnas);
         rs.close();
         ps.close();
-        conn.close();
+        
         return tablemodel;
         
     }

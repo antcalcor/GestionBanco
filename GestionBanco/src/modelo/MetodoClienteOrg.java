@@ -55,7 +55,7 @@ public class MetodoClienteOrg extends Conexion {
         tablemodel.setDataVector(datos, columnas);
         rs.close();
         ps.close();
-        conn.close();
+        
         return tablemodel;
 
     }

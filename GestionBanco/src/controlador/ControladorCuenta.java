@@ -67,13 +67,13 @@ public class ControladorCuenta implements ActionListener, MouseListener {
         vcu.jButton4.addActionListener(this);
 
         vcu.jTable1.setModel(mcu.cogerCuentasBBDD());
-        
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-                switch (accionesCuenta.valueOf(e.getActionCommand())) {
+
+        switch (accionesCuenta.valueOf(e.getActionCommand())) {
 
             case VOLVER:
 
@@ -95,20 +95,31 @@ public class ControladorCuenta implements ActionListener, MouseListener {
                 break;
         }
     }
-    
-        private void presionarJTable1(java.awt.event.MouseEvent e) {
+
+    private void presionarJTable1(java.awt.event.MouseEvent e) {
 
         if (e.getButton() == 1)// boton izquierdo
         {
             int fila = this.vcu.jTable1.rowAtPoint(e.getPoint());
             if (fila > -1) {
 
-                vcu.jFormattedTextField3.setText(String.valueOf(vcu.jTable1.getValueAt(fila, 0)));
-                vcu.jFormattedTextField4.setText(String.valueOf(vcu.jTable1.getValueAt(fila, 1)));
-                vcu.jFormattedTextField6.setText(String.valueOf(vcu.jTable1.getValueAt(fila, 2)));
-                vcu.jFormattedTextField7.setText(String.valueOf(vcu.jTable1.getValueAt(fila, 3)));
-                vcu.jFormattedTextField8.setText(String.valueOf(vcu.jTable1.getValueAt(fila, 4)));
-                vcu.jFormattedTextField9.setText(String.valueOf(vcu.jTable1.getValueAt(fila, 5)));
+                vcu.jFormattedTextField9.setText(String.valueOf(vcu.jTable1.getValueAt(fila, 0)));
+                vcu.jFormattedTextField3.setText(String.valueOf(vcu.jTable1.getValueAt(fila, 1)));
+                vcu.jFormattedTextField4.setText(String.valueOf(vcu.jTable1.getValueAt(fila, 2)));
+                vcu.jFormattedTextField8.setText(String.valueOf(vcu.jTable1.getValueAt(fila, 3)));
+                vcu.jFormattedTextField7.setText(String.valueOf(vcu.jTable1.getValueAt(fila, 4)));
+
+                if (String.valueOf(vcu.jTable1.getValueAt(fila, 5)).equalsIgnoreCase("X")) {
+
+                    vcu.jCheckBox1.setSelected(true);
+
+                } else {
+
+                    vcu.jCheckBox1.setSelected(false);
+
+                }
+                
+                vcu.jFormattedTextField6.setText(String.valueOf((vcu.jTable1.getValueAt(fila, 6))));
 
             }
 
@@ -118,29 +129,29 @@ public class ControladorCuenta implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        
+
         presionarJTable1(e);
-        
+
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        
+
     }
 
 }

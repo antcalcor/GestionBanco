@@ -49,11 +49,8 @@ public class VistaClientePersona extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jFormattedTextField3 = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jFormattedTextField5 = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jFormattedTextField7 = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -65,23 +62,24 @@ public class VistaClientePersona extends javax.swing.JFrame {
         jFormattedTextField12 = new javax.swing.JFormattedTextField();
         jFormattedTextField13 = new javax.swing.JFormattedTextField();
 
+        jDialog1.setMinimumSize(new java.awt.Dimension(380, 380));
         jDialog1.getContentPane().setLayout(null);
 
         jButton6.setText("Añadir");
         jDialog1.getContentPane().add(jButton6);
-        jButton6.setBounds(20, 280, 67, 32);
+        jButton6.setBounds(10, 280, 80, 32);
 
         jButton7.setText("Modificar");
         jDialog1.getContentPane().add(jButton7);
-        jButton7.setBounds(100, 280, 83, 32);
+        jButton7.setBounds(100, 280, 90, 32);
 
         jButton8.setText("Eliminar");
         jDialog1.getContentPane().add(jButton8);
-        jButton8.setBounds(190, 280, 76, 32);
+        jButton8.setBounds(200, 280, 80, 32);
 
         jButton9.setText("Volver");
         jDialog1.getContentPane().add(jButton9);
-        jButton9.setBounds(270, 280, 66, 32);
+        jButton9.setBounds(290, 280, 70, 32);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -103,23 +101,23 @@ public class VistaClientePersona extends javax.swing.JFrame {
         jDialog1.getContentPane().add(jLabel10);
         jLabel10.setBounds(140, 20, 70, 16);
         jDialog1.getContentPane().add(jFormattedTextField8);
-        jFormattedTextField8.setBounds(170, 240, 150, 20);
+        jFormattedTextField8.setBounds(180, 240, 150, 20);
 
         jLabel11.setText("Ciudad");
         jDialog1.getContentPane().add(jLabel11);
-        jLabel11.setBounds(170, 220, 120, 16);
+        jLabel11.setBounds(180, 220, 120, 16);
         jDialog1.getContentPane().add(jFormattedTextField9);
-        jFormattedTextField9.setBounds(20, 240, 130, 20);
+        jFormattedTextField9.setBounds(30, 240, 130, 20);
 
         jLabel12.setText("Codigo Postal");
         jDialog1.getContentPane().add(jLabel12);
-        jLabel12.setBounds(20, 220, 90, 16);
+        jLabel12.setBounds(30, 220, 90, 16);
         jDialog1.getContentPane().add(jFormattedTextField10);
-        jFormattedTextField10.setBounds(20, 190, 290, 20);
+        jFormattedTextField10.setBounds(30, 190, 290, 20);
 
         jLabel13.setText("Calle");
         jDialog1.getContentPane().add(jLabel13);
-        jLabel13.setBounds(20, 170, 40, 16);
+        jLabel13.setBounds(30, 170, 40, 16);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(740, 510));
@@ -141,55 +139,35 @@ public class VistaClientePersona extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(60, 40, 610, 210);
         getContentPane().add(jFormattedTextField1);
-        jFormattedTextField1.setBounds(20, 320, 150, 20);
+        jFormattedTextField1.setBounds(220, 330, 150, 20);
 
         jLabel1.setText("Codigo Cliente");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 300, 90, 16);
+        jLabel1.setBounds(220, 310, 90, 16);
         getContentPane().add(jFormattedTextField2);
-        jFormattedTextField2.setBounds(20, 270, 340, 20);
+        jFormattedTextField2.setBounds(20, 270, 380, 20);
 
         jLabel2.setText("Nombre");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 250, 50, 16);
         getContentPane().add(jFormattedTextField3);
-        jFormattedTextField3.setBounds(20, 390, 150, 20);
+        jFormattedTextField3.setBounds(20, 380, 150, 20);
 
         jLabel3.setText("Sexo");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 370, 29, 16);
-
-        jLabel4.setText("Direcciones");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(410, 260, 70, 16);
+        jLabel3.setBounds(20, 360, 29, 16);
         getContentPane().add(jFormattedTextField5);
-        jFormattedTextField5.setBounds(260, 340, 100, 20);
+        jFormattedTextField5.setBounds(530, 310, 100, 20);
 
         jLabel5.setText("Telefono");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(200, 300, 60, 16);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(410, 280, 280, 70);
+        jLabel5.setBounds(470, 270, 60, 16);
         getContentPane().add(jFormattedTextField7);
-        jFormattedTextField7.setBounds(200, 390, 160, 20);
+        jFormattedTextField7.setBounds(20, 330, 160, 20);
 
         jLabel9.setText("Fecha Nacimiento");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(200, 370, 110, 16);
+        jLabel9.setBounds(20, 310, 110, 16);
 
         jButton1.setText("Añadir");
         getContentPane().add(jButton1);
@@ -207,17 +185,17 @@ public class VistaClientePersona extends javax.swing.JFrame {
         getContentPane().add(jButton4);
         jButton4.setBounds(640, 420, 66, 32);
 
-        jButton5.setText("+");
+        jButton5.setText("DIRECCIONES");
         getContentPane().add(jButton5);
-        jButton5.setBounds(650, 360, 40, 32);
+        jButton5.setBounds(240, 370, 110, 32);
 
         jLabel14.setText("PERSONA FISICA");
         getContentPane().add(jLabel14);
         jLabel14.setBounds(60, 10, 100, 16);
         getContentPane().add(jFormattedTextField12);
-        jFormattedTextField12.setBounds(260, 300, 100, 20);
+        jFormattedTextField12.setBounds(530, 270, 100, 20);
         getContentPane().add(jFormattedTextField13);
-        jFormattedTextField13.setBounds(260, 320, 100, 20);
+        jFormattedTextField13.setBounds(530, 290, 100, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -287,14 +265,11 @@ public class VistaClientePersona extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel14;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
-    public javax.swing.JLabel jLabel4;
     public javax.swing.JLabel jLabel5;
     public javax.swing.JLabel jLabel9;
     public javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JScrollPane jScrollPane4;
     public javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     public javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
 }

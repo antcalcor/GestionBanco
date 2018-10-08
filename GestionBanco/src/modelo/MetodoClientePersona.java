@@ -46,7 +46,7 @@ public class MetodoClientePersona extends Conexion{
 
             datos[i][0] = rs.getString("COD_CLIENTE");
             datos[i][1] = rs.getString("NOMBRE");
-            datos[i][2] = rs.getString("FECHA_NACI");
+            datos[i][2] = rs.getDate("FECHA_NACI").toLocalDate().toString();
             datos[i][3] = rs.getString("SEXO");
 
             i++;
@@ -54,7 +54,7 @@ public class MetodoClientePersona extends Conexion{
         tablemodel.setDataVector(datos, columnas);
         rs.close();
         ps.close();
-        conn.close();
+        
         return tablemodel;
 
     }

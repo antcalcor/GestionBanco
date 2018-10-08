@@ -29,6 +29,7 @@ public class ControladorClientePersona implements ActionListener, MouseListener 
     public MetodoClientePersona mcp = new MetodoClientePersona();
     public VistaInicial vi = new VistaInicial();
     public MetodoDireccion mDirec = new MetodoDireccion();
+    public int codigo = -1;
 
     public ControladorClientePersona(VistaClientePersona vcp) {
 
@@ -38,7 +39,7 @@ public class ControladorClientePersona implements ActionListener, MouseListener 
 
     public enum accionesClientePersona {
 
-        AGREGAR, MODIFICAR, BORRAR, VOLVER, DIRECCIONES;
+        AGREGAR, MODIFICAR, BORRAR, VOLVER, DIRECCIONES, AGREGAR_D, MODIFICAR_D, BORRAR_D, VOLVER_D;
 
     }
 
@@ -57,6 +58,8 @@ public class ControladorClientePersona implements ActionListener, MouseListener 
 
         vcp.jTable1.addMouseListener(this);
         vcp.jTable1.setModel(new DefaultTableModel());
+        vcp.jTable3.addMouseListener(this);
+        vcp.jTable3.setModel(new DefaultTableModel());
 
         vcp.jButton1.setActionCommand("AGREGAR");
         vcp.jButton1.addActionListener(this);
@@ -66,12 +69,20 @@ public class ControladorClientePersona implements ActionListener, MouseListener 
         vcp.jButton3.addActionListener(this);
         vcp.jButton4.setActionCommand("VOLVER");
         vcp.jButton4.addActionListener(this);
+        vcp.jButton6.setActionCommand("AGREGAR_D");
+        vcp.jButton6.addActionListener(this);
+        vcp.jButton7.setActionCommand("MODIFICAR_D");
+        vcp.jButton7.addActionListener(this);
+        vcp.jButton8.setActionCommand("BORRAR_D");
+        vcp.jButton8.addActionListener(this);
+        vcp.jButton9.setActionCommand("VOLVER_D");
+        vcp.jButton9.addActionListener(this);
         vcp.jButton5.setActionCommand("DIRECCIONES");
         vcp.jButton5.addActionListener(this);
-        
+
         vcp.jTable1.setModel(mcp.cogerClientesPersonaBBDD());
-        vcp.jTable3.setModel(mDirec.cogerDireccionesBBDD("DIREC_PERS"));
-        
+        //vcp.jTable3.setModel(mDirec.cogerDireccionesBBDD("DIREC_PERS"));
+
     }
 
     @Override
@@ -98,9 +109,75 @@ public class ControladorClientePersona implements ActionListener, MouseListener 
                 break;
 
             case DIRECCIONES:
-                
+
+                if (codigo != -1) {
+                    vcp.setVisible(false);
+                    vcp.jDialog1.setVisible(true);
+
+                    try {
+                        vcp.jTable3.setModel(mDirec.cogerDireccionesBBDD(codigo, "T_PERSONA"));
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorClientePersona.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+                break;
+
+            case AGREGAR_D:
+
+                break;
+
+            case MODIFICAR_D:
+
+                break;
+
+            case BORRAR_D:
+                break;
+
+            case VOLVER_D:
+
+                vcp.jDialog1.setVisible(false);
+                vcp.setVisible(true);
+                vcp.jTable3.setModel(new DefaultTableModel());
+
                 break;
         }
+    }
+
+    private void presionarJTable1(java.awt.event.MouseEvent e) throws SQLException {
+
+        if (e.getButton() == 1)// boton izquierdo
+        {
+            int fila = this.vcp.jTable1.rowAtPoint(e.getPoint());
+            if (fila > -1) {
+
+                codigo = Integer.parseInt(String.valueOf(vcp.jTable1.getValueAt(fila, 0)));
+                vcp.jFormattedTextField1.setText(String.valueOf(vcp.jTable1.getValueAt(fila, 0)));
+                vcp.jFormattedTextField2.setText(String.valueOf(vcp.jTable1.getValueAt(fila, 1)));
+                vcp.jFormattedTextField7.setText(String.valueOf(vcp.jTable1.getValueAt(fila, 2)));
+                vcp.jFormattedTextField3.setText(String.valueOf(vcp.jTable1.getValueAt(fila, 3)));
+
+            }
+
+        }
+
+    }
+
+    private void presionarJTable3(java.awt.event.MouseEvent e) throws SQLException {
+
+        if (e.getButton() == 1)// boton izquierdo
+        {
+            int fila = this.vcp.jTable3.rowAtPoint(e.getPoint());
+            if (fila > -1) {
+
+                vcp.jFormattedTextField10.setText(String.valueOf(vcp.jTable3.getValueAt(fila, 0)));
+                vcp.jFormattedTextField9.setText(String.valueOf(vcp.jTable3.getValueAt(fila, 1)));
+                vcp.jFormattedTextField8.setText(String.valueOf(vcp.jTable3.getValueAt(fila, 2)));
+
+            }
+
+        }
+
     }
 
     @Override
@@ -111,6 +188,12 @@ public class ControladorClientePersona implements ActionListener, MouseListener 
     @Override
     public void mousePressed(MouseEvent e) {
 
+        try {
+            presionarJTable1(e);
+            presionarJTable3(e);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorClientePersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
