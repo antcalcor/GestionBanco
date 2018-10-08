@@ -113,6 +113,7 @@ public class ControladorClientePersona implements ActionListener, MouseListener 
                 if (codigo != -1) {
                     vcp.setVisible(false);
                     vcp.jDialog1.setVisible(true);
+                    vcp.jDialog1.setLocationRelativeTo(null);
 
                     try {
                         vcp.jTable3.setModel(mDirec.cogerDireccionesBBDD(codigo, "T_PERSONA"));

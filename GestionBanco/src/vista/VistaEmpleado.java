@@ -78,6 +78,8 @@ public class VistaEmpleado extends javax.swing.JFrame {
         jLabel1.setText("DNI");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(20, 310, 90, 16);
+
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("########U"))));
         getContentPane().add(jFormattedTextField1);
         jFormattedTextField1.setBounds(20, 330, 150, 20);
 
@@ -100,6 +102,8 @@ public class VistaEmpleado extends javax.swing.JFrame {
         jLabel3.setText("Fecha Nacimiento");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(20, 360, 110, 16);
+
+        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
         getContentPane().add(jFormattedTextField3);
         jFormattedTextField3.setBounds(20, 380, 150, 20);
 
@@ -112,6 +116,8 @@ public class VistaEmpleado extends javax.swing.JFrame {
         jLabel5.setText("Sucursal");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(440, 320, 90, 16);
+
+        jFormattedTextField5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         getContentPane().add(jFormattedTextField5);
         jFormattedTextField5.setBounds(440, 340, 150, 20);
 

@@ -51,12 +51,16 @@ public class VistaCuenta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(730, 490));
         getContentPane().setLayout(null);
+
+        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         getContentPane().add(jFormattedTextField3);
         jFormattedTextField3.setBounds(70, 360, 140, 20);
 
         jLabel3.setText("Codigo Sucursal");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(70, 340, 100, 16);
+
+        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         getContentPane().add(jFormattedTextField4);
         jFormattedTextField4.setBounds(70, 310, 140, 20);
 
@@ -95,24 +99,32 @@ public class VistaCuenta extends javax.swing.JFrame {
         jButton1.setText("Añadir");
         getContentPane().add(jButton1);
         jButton1.setBounds(310, 400, 67, 32);
+
+        jFormattedTextField6.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         getContentPane().add(jFormattedTextField6);
         jFormattedTextField6.setBounds(260, 310, 140, 20);
 
         jLabel8.setText("Codigo Cliente");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(260, 290, 110, 16);
+
+        jFormattedTextField7.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         getContentPane().add(jFormattedTextField7);
         jFormattedTextField7.setBounds(450, 360, 140, 20);
 
         jLabel5.setText("Saldo Medio");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(450, 340, 80, 16);
+
+        jFormattedTextField8.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         getContentPane().add(jFormattedTextField8);
         jFormattedTextField8.setBounds(450, 310, 140, 20);
 
         jLabel9.setText("Saldo Actual");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(450, 290, 110, 16);
+
+        jFormattedTextField9.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         getContentPane().add(jFormattedTextField9);
         jFormattedTextField9.setBounds(70, 410, 140, 20);
 

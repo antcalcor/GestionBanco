@@ -114,6 +114,7 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
                 if (codigo != -1) {
                     vco.setVisible(false);
                     vco.jDialog1.setVisible(true);
+                    vco.jDialog1.setLocationRelativeTo(null);
 
                     try {
                         vco.jTable3.setModel(mDirec.cogerDireccionesBBDD(codigo, "T_ORGANIZACION"));

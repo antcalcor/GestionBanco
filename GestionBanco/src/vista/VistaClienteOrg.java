@@ -108,6 +108,8 @@ public class VistaClienteOrg extends javax.swing.JFrame {
         jLabel11.setText("Ciudad");
         jDialog1.getContentPane().add(jLabel11);
         jLabel11.setBounds(190, 220, 120, 16);
+
+        jFormattedTextField9.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         jDialog1.getContentPane().add(jFormattedTextField9);
         jFormattedTextField9.setBounds(40, 240, 130, 20);
 
@@ -123,7 +125,7 @@ public class VistaClienteOrg extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 540));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,82 +140,61 @@ public class VistaClienteOrg extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(70, 60, 610, 210);
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 610, 210));
 
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        getContentPane().add(jFormattedTextField1);
-        jFormattedTextField1.setBounds(30, 340, 150, 20);
+        getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 150, -1));
 
         jLabel1.setText("Codigo Cliente");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 320, 90, 16);
-        getContentPane().add(jFormattedTextField2);
-        jFormattedTextField2.setBounds(30, 290, 340, 20);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 90, -1));
+        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 340, -1));
 
         jLabel2.setText("Nombre");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 270, 50, 16);
-        getContentPane().add(jFormattedTextField4);
-        jFormattedTextField4.setBounds(30, 400, 140, 20);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 50, -1));
+        getContentPane().add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 140, -1));
 
-        jFormattedTextField5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        getContentPane().add(jFormattedTextField5);
-        jFormattedTextField5.setBounds(560, 330, 100, 20);
+        jFormattedTextField5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        getContentPane().add(jFormattedTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 100, -1));
 
         jLabel5.setText("Telefono");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(500, 290, 60, 16);
-        getContentPane().add(jFormattedTextField6);
-        jFormattedTextField6.setBounds(220, 340, 280, 20);
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 60, -1));
+        getContentPane().add(jFormattedTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 280, -1));
 
         jLabel6.setText("Representante");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(220, 320, 90, 16);
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 90, -1));
 
         jLabel7.setText("Tipo Organizacion");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(30, 380, 110, 16);
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 110, -1));
 
         jLabel8.setText("Numero Empleados");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(30, 440, 120, 16);
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 120, -1));
 
         jButton1.setText("Añadir");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(380, 440, 67, 32);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, -1, -1));
 
         jButton2.setText("Modificar");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(460, 440, 83, 32);
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, -1, -1));
 
         jButton3.setText("Eliminar");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(560, 440, 76, 32);
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, -1, -1));
 
         jButton4.setText("Volver");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(650, 440, 66, 32);
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, -1, -1));
 
         jButton5.setText("DIRECCIONES");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(230, 390, 120, 30);
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 120, 30));
 
         jLabel14.setText("PERSONA JURIDICA");
-        getContentPane().add(jLabel14);
-        jLabel14.setBounds(70, 30, 120, 16);
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 120, -1));
 
-        jFormattedTextField11.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        getContentPane().add(jFormattedTextField11);
-        jFormattedTextField11.setBounds(30, 460, 150, 20);
+        jFormattedTextField11.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        getContentPane().add(jFormattedTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 150, -1));
 
-        jFormattedTextField12.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        getContentPane().add(jFormattedTextField12);
-        jFormattedTextField12.setBounds(560, 290, 100, 20);
+        jFormattedTextField12.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        getContentPane().add(jFormattedTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 100, -1));
 
-        jFormattedTextField13.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        getContentPane().add(jFormattedTextField13);
-        jFormattedTextField13.setBounds(560, 310, 100, 20);
+        jFormattedTextField13.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        getContentPane().add(jFormattedTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 100, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -135,6 +135,11 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField9">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -207,7 +212,7 @@
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-    <Property name="useNullLayout" type="boolean" value="true"/>
+    <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -304,7 +309,7 @@
     <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField5">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format subtype="0" type="0"/>
+          <Format format="#0" subtype="-1" type="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -459,7 +464,7 @@
     <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField11">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format subtype="0" type="0"/>
+          <Format format="#0" subtype="-1" type="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -474,7 +479,7 @@
     <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField12">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format subtype="0" type="0"/>
+          <Format format="#0" subtype="-1" type="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -489,7 +494,7 @@
     <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField13">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format subtype="0" type="0"/>
+          <Format format="#0" subtype="-1" type="0"/>
         </Property>
       </Properties>
       <AuxValues>

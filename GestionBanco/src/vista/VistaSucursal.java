@@ -81,6 +81,8 @@ public class VistaSucursal extends javax.swing.JFrame {
         jLabel1.setText("Codigo Sucursal");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(460, 270, 110, 16);
+
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         getContentPane().add(jFormattedTextField1);
         jFormattedTextField1.setBounds(460, 290, 150, 20);
 
@@ -93,6 +95,8 @@ public class VistaSucursal extends javax.swing.JFrame {
         jLabel3.setText("Codigo Postal");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(40, 320, 110, 16);
+
+        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         getContentPane().add(jFormattedTextField3);
         jFormattedTextField3.setBounds(40, 340, 150, 20);
 
