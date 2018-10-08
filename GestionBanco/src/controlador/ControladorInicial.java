@@ -24,14 +24,15 @@ import vista.*;
 public class ControladorInicial implements ActionListener, MouseListener {
 
     public VistaInicial vi = new VistaInicial();
-    public VistaCliente vc = new VistaCliente();
+    public VistaClientePersona vcp = new VistaClientePersona();
+    public VistaClienteOrg vco = new VistaClienteOrg();
     public VistaCuenta vcu = new VistaCuenta();
     public VistaSucursal vs = new VistaSucursal();
     public VistaEmpleado ve = new VistaEmpleado();
 
     public enum accionesVi {
 
-        CLIENTE, CUENTA, SUCURSAL, EMPLEADO;
+        CLIENTE_PERSONA, CLIENTE_ORG, CUENTA, SUCURSAL, EMPLEADO;
 
     }
 
@@ -39,7 +40,7 @@ public class ControladorInicial implements ActionListener, MouseListener {
         this.vi = vi;
     }
 
-    public void Iniciar(){
+    public void Iniciar() {
 
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -49,7 +50,7 @@ public class ControladorInicial implements ActionListener, MouseListener {
         } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
         }
 
-        vi.jButton1.setActionCommand("CLIENTE");
+        vi.jButton1.setActionCommand("CLIENTE_PERSONA");
         vi.jButton1.addActionListener(this);
         vi.jButton2.setActionCommand("CUENTA");
         vi.jButton2.addActionListener(this);
@@ -57,6 +58,8 @@ public class ControladorInicial implements ActionListener, MouseListener {
         vi.jButton3.addActionListener(this);
         vi.jButton4.setActionCommand("EMPLEADO");
         vi.jButton4.addActionListener(this);
+        vi.jButton5.setActionCommand("CLIENTE_ORG");
+        vi.jButton5.addActionListener(this);
 
     }
 
@@ -65,23 +68,41 @@ public class ControladorInicial implements ActionListener, MouseListener {
 
         switch (accionesVi.valueOf(e.getActionCommand())) {
 
-            case CLIENTE:
+            case CLIENTE_PERSONA:
 
                 vi.setVisible(false);
-                new ControladorCliente(vc).Iniciar();
+                 {
+                    try {
+                        new ControladorClientePersona(vcp).Iniciar();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
 
                 break;
 
-            case CUENTA:
+            case CLIENTE_ORG:
 
                 vi.setVisible(false);
         {
             try {
-                new ControladorCuenta(vcu).Iniciar();
+                new ControladorClienteOrg(vco).Iniciar();
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorInicial.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
+                break;
+            case CUENTA:
+
+                vi.setVisible(false);
+                 {
+                    try {
+                        new ControladorCuenta(vcu).Iniciar();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
 
                 break;
 

@@ -9,40 +9,70 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import vista.VistaCliente;
+import javax.swing.table.DefaultTableModel;
+import vista.*;
+import modelo.*;
 
 /**
  *
  * @author carde
  */
-public class ControladorCliente implements ActionListener, MouseListener {
+public class ControladorClienteOrg implements ActionListener, MouseListener {
 
-    public VistaCliente vc = new VistaCliente();
-
-    public ControladorCliente(VistaCliente vc) {
-
-        this.vc = vc;
-
+    public VistaClienteOrg vco = new VistaClienteOrg();
+    public MetodoClienteOrg mco = new MetodoClienteOrg();
+    public VistaInicial vi = new VistaInicial();
+    public MetodoDireccion mDirec = new MetodoDireccion();
+    
+    public ControladorClienteOrg(VistaClienteOrg vco){
+        
+        this.vco=vco;
+        
     }
-
-    public void Iniciar() {
-
+    
+    public enum accionesClienteOrg{
+        
+        AGREGAR,MODIFICAR,BORRAR,VOLVER,DIRECCIONES;
+        
+    }
+    
+    public void Iniciar() throws SQLException{
+        
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-            SwingUtilities.updateComponentTreeUI(vc);
-            vc.setVisible(true);
-            vc.setLocationRelativeTo(null);
+            SwingUtilities.updateComponentTreeUI(vco);
+            vco.setVisible(true);
+            vco.setLocationRelativeTo(null);
         } catch (UnsupportedLookAndFeelException ex) {
         } catch (ClassNotFoundException ex) {
         } catch (InstantiationException ex) {
         } catch (IllegalAccessException ex) {
         }
-
+        
+        vco.jTable1.addMouseListener(this);
+        vco.jTable1.setModel(new DefaultTableModel());
+        vco.jTable3.addMouseListener(this);
+        vco.jTable3.setModel(new DefaultTableModel());
+        
+        vco.jButton1.setActionCommand("AGREGAR");
+        vco.jButton1.addActionListener(this);
+        vco.jButton2.setActionCommand("MODIFICAR");
+        vco.jButton2.addActionListener(this);
+        vco.jButton3.setActionCommand("BORRAR");
+        vco.jButton3.addActionListener(this);
+        vco.jButton4.setActionCommand("VOLVER");
+        vco.jButton4.addActionListener(this);
+        vco.jButton5.setActionCommand("DIRECCIONES");
+        vco.jButton5.addActionListener(this);
+        
+        vco.jTable1.setModel(mco.cogerClientesOrgBBDD());
+        vco.jTable3.setModel(mDirec.cogerDireccionesBBDD("DIREC_ORG"));
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -72,5 +102,7 @@ public class ControladorCliente implements ActionListener, MouseListener {
     public void mouseExited(MouseEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    
+    
 }
