@@ -27,21 +27,21 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
     public MetodoClienteOrg mco = new MetodoClienteOrg();
     public VistaInicial vi = new VistaInicial();
     public MetodoDireccion mDirec = new MetodoDireccion();
-    
-    public ControladorClienteOrg(VistaClienteOrg vco){
-        
-        this.vco=vco;
-        
+
+    public ControladorClienteOrg(VistaClienteOrg vco) {
+
+        this.vco = vco;
+
     }
-    
-    public enum accionesClienteOrg{
-        
-        AGREGAR,MODIFICAR,BORRAR,VOLVER,DIRECCIONES;
-        
+
+    public enum accionesClienteOrg {
+
+        AGREGAR, MODIFICAR, BORRAR, VOLVER, DIRECCIONES;
+
     }
-    
-    public void Iniciar() throws SQLException{
-        
+
+    public void Iniciar() throws SQLException {
+
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
             SwingUtilities.updateComponentTreeUI(vco);
@@ -52,12 +52,12 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
         } catch (InstantiationException ex) {
         } catch (IllegalAccessException ex) {
         }
-        
+
         vco.jTable1.addMouseListener(this);
         vco.jTable1.setModel(new DefaultTableModel());
         vco.jTable3.addMouseListener(this);
         vco.jTable3.setModel(new DefaultTableModel());
-        
+
         vco.jButton1.setActionCommand("AGREGAR");
         vco.jButton1.addActionListener(this);
         vco.jButton2.setActionCommand("MODIFICAR");
@@ -68,14 +68,38 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
         vco.jButton4.addActionListener(this);
         vco.jButton5.setActionCommand("DIRECCIONES");
         vco.jButton5.addActionListener(this);
-        
+
         vco.jTable1.setModel(mco.cogerClientesOrgBBDD());
         vco.jTable3.setModel(mDirec.cogerDireccionesBBDD("DIREC_ORG"));
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        switch (accionesClienteOrg.valueOf(e.getActionCommand())) {
+
+            case VOLVER:
+
+                vco.setVisible(false);
+                new ControladorInicial(vi).Iniciar();
+
+                break;
+
+            case AGREGAR:
+
+                break;
+
+            case BORRAR:
+
+                break;
+
+            case MODIFICAR:
+
+                break;
+
+            case DIRECCIONES:
+
+                break;
+        }
     }
 
     @Override
@@ -102,7 +126,5 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
     public void mouseExited(MouseEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
+
 }

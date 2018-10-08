@@ -124,6 +124,7 @@ public class VistaClienteOrg extends javax.swing.JFrame {
         jLabel13.setBounds(20, 170, 40, 16);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(750, 540));
         getContentPane().setLayout(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
