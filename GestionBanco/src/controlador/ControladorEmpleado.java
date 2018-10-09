@@ -83,32 +83,71 @@ public class ControladorEmpleado implements ActionListener, MouseListener {
 
             case AGREGAR:
 
-                /*int codSuc = Integer.parseInt(vs.jFormattedTextField1.getText());
-                String calle = vs.jFormattedTextField2.getText();
-                int codPost = Integer.parseInt(vs.jFormattedTextField3.getText());
-                String ciudad = vs.jFormattedTextField4.getText();
-                
-                ms.nuevaSucursal(codSuc, calle, codPost, ciudad);
-                
-                vs.jFormattedTextField1.setText("");
-                vs.jFormattedTextField2.setText("");
-                vs.jFormattedTextField3.setText("");
-                vs.jFormattedTextField4.setText("");
-                
-        {
-            try {
-                vs.jTable1.setModel(ms.cogerSucursalesBBDD());
-            } catch (SQLException ex) {
-                Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }*/
+                String dni = ve.jFormattedTextField1.getText();
+                String nombre = ve.jFormattedTextField2.getText();
+                String fecha = ve.jFormattedTextField3.getText();
+                String sexo = ve.jFormattedTextField4.getText();
+                int cod_sucur = Integer.parseInt(ve.jFormattedTextField5.getText());
+
+                me.nuevoEmpleado(dni, nombre, fecha, sexo, cod_sucur);
+
+                ve.jFormattedTextField1.setText("");
+                ve.jFormattedTextField2.setText("");
+                ve.jFormattedTextField3.setText("");
+                ve.jFormattedTextField4.setText("");
+                ve.jFormattedTextField5.setText("");
+
+                try {
+                    ve.jTable1.setModel(me.cogerEmpleadosBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
                 break;
 
             case BORRAR:
+                
+                dni = ve.jFormattedTextField1.getText();
+
+                me.borrarEmpleado(dni);
+
+                ve.jFormattedTextField1.setText("");
+                ve.jFormattedTextField2.setText("");
+                ve.jFormattedTextField3.setText("");
+                ve.jFormattedTextField4.setText("");
+                ve.jFormattedTextField5.setText("");
+
+                try {
+                    ve.jTable1.setModel(me.cogerEmpleadosBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
 
                 break;
 
             case MODIFICAR:
+
+                dni = ve.jFormattedTextField1.getText();
+                nombre = ve.jFormattedTextField2.getText();
+                fecha = ve.jFormattedTextField3.getText();
+                sexo = ve.jFormattedTextField4.getText();
+                cod_sucur = Integer.parseInt(ve.jFormattedTextField5.getText());
+
+                me.modificarEmpleado(dni, nombre, fecha, sexo, cod_sucur);
+
+                ve.jFormattedTextField1.setText("");
+                ve.jFormattedTextField2.setText("");
+                ve.jFormattedTextField3.setText("");
+                ve.jFormattedTextField4.setText("");
+                ve.jFormattedTextField5.setText("");
+
+                try {
+                    ve.jTable1.setModel(me.cogerEmpleadosBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
 
                 break;
         }
@@ -136,7 +175,7 @@ public class ControladorEmpleado implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        
+
     }
 
     @Override
@@ -146,17 +185,17 @@ public class ControladorEmpleado implements ActionListener, MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        
+
     }
 
 }

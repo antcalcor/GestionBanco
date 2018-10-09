@@ -109,7 +109,7 @@ public class ControladorCuenta implements ActionListener, MouseListener {
                 vcu.jFormattedTextField8.setText(String.valueOf(vcu.jTable1.getValueAt(fila, 3)));
                 vcu.jFormattedTextField7.setText(String.valueOf(vcu.jTable1.getValueAt(fila, 4)));
 
-                if (String.valueOf(vcu.jTable1.getValueAt(fila, 5)).equalsIgnoreCase("X")) {
+                if (String.valueOf(vcu.jTable1.getValueAt(fila, 5)).equalsIgnoreCase("AHORRO")) {
 
                     vcu.jCheckBox1.setSelected(true);
 

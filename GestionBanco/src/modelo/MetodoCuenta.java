@@ -6,10 +6,12 @@
 package modelo;
 
 import db.Conexion;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,6 +20,49 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MetodoCuenta extends Conexion {
 
+        public void nuevoEmpleado(String dni, String nombre, String fecha, String sexo, int cod_sucur) {
+
+        try {
+            Connection conn = this.getConnection();
+            String q = "{call INSERTAR_EMPLEADO ('" + dni + "','" + nombre + "','" + fecha + "','" + sexo + "'," + cod_sucur + ")}";
+            CallableStatement storedProc = conn.prepareCall(q);
+            storedProc.execute();
+            storedProc.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
+        }
+    }
+
+    public void modificarEmpleado(String dni, String nombre, String fecha, String sexo, int cod_sucur) {
+
+        try {
+            Connection conn = this.getConnection();
+            String q = "{call MODIFICAR_EMPLEADO ('" + dni + "','" + nombre + "','" + fecha + "','" + sexo + "'," + cod_sucur + ")}";
+            CallableStatement storedProc = conn.prepareCall(q);
+            storedProc.execute();
+            storedProc.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
+        }
+    }
+
+    public void borrarEmpleado(String dni) {
+
+        try {
+            Connection conn = this.getConnection();
+            String q = "{call BORRAR_EMPLEADO ('" + dni + "')}";
+            CallableStatement storedProc = conn.prepareCall(q);
+            storedProc.execute();
+            storedProc.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
+        }
+    }
+    
     public DefaultTableModel cogerCuentasBBDD() throws SQLException {
 
         PreparedStatement ps = null;

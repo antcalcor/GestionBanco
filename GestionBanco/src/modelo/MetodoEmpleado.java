@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,27 +20,55 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MetodoEmpleado extends Conexion {
 
-        public void nuevoEmpleado (String dni){
-        
-        try{
+    public void nuevoEmpleado(String dni, String nombre, String fecha, String sexo, int cod_sucur) {
+
+        try {
             Connection conn = this.getConnection();
-            String q = "{call INSERTAR_EMPLEADO ('" + dni + "'," + dni + ",'" + dni + ",'" + dni + ",'" + dni + ")}";
+            String q = "{call INSERTAR_EMPLEADO ('" + dni + "','" + nombre + "','" + fecha + "','" + sexo + "'," + cod_sucur + ")}";
             CallableStatement storedProc = conn.prepareCall(q);
             storedProc.execute();
             storedProc.close();
-            
-            
-        }catch (SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
         }
     }
-    
-    public DefaultTableModel cogerEmpleadosBBDD() throws SQLException{
-        
+
+    public void modificarEmpleado(String dni, String nombre, String fecha, String sexo, int cod_sucur) {
+
+        try {
+            Connection conn = this.getConnection();
+            String q = "{call MODIFICAR_EMPLEADO ('" + dni + "','" + nombre + "','" + fecha + "','" + sexo + "'," + cod_sucur + ")}";
+            CallableStatement storedProc = conn.prepareCall(q);
+            storedProc.execute();
+            storedProc.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
+        }
+    }
+
+    public void borrarEmpleado(String dni) {
+
+        try {
+            Connection conn = this.getConnection();
+            String q = "{call BORRAR_EMPLEADO ('" + dni + "')}";
+            CallableStatement storedProc = conn.prepareCall(q);
+            storedProc.execute();
+            storedProc.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
+        }
+    }
+
+    public DefaultTableModel cogerEmpleadosBBDD() throws SQLException {
+
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection conn = this.getConnection();
-        String[] columnas = {"DNI", "Nombre", "Fecha Nacimiento", "Sexo","Codigo Sucursal"};
+        String[] columnas = {"DNI", "Nombre", "Fecha Nacimiento", "Sexo", "Codigo Sucursal"};
         DefaultTableModel tablemodel = new DefaultTableModel();
 
         int i = 0;
@@ -71,7 +100,7 @@ public class MetodoEmpleado extends Conexion {
         tablemodel.setDataVector(datos, columnas);
         rs.close();
         ps.close();
-        
+
         return tablemodel;
 
     }

@@ -97,21 +97,51 @@ public class ControladorSucursal implements ActionListener, MouseListener {
                 vs.jFormattedTextField3.setText("");
                 vs.jFormattedTextField4.setText("");
 
-                 {
-                    try {
-                        vs.jTable1.setModel(ms.cogerSucursalesBBDD());
-                    } catch (SQLException ex) {
-                        Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                try {
+                    vs.jTable1.setModel(ms.cogerSucursalesBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 break;
 
             case BORRAR:
+                
+                codSuc = Integer.parseInt(vs.jFormattedTextField1.getText());
+                ms.borrarSucursal(codSuc);
+
+                vs.jFormattedTextField1.setText("");
+                vs.jFormattedTextField2.setText("");
+                vs.jFormattedTextField3.setText("");
+                vs.jFormattedTextField4.setText("");
+
+                try {
+                    vs.jTable1.setModel(ms.cogerSucursalesBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 break;
 
             case MODIFICAR:
+
+                codSuc = Integer.parseInt(vs.jFormattedTextField1.getText());
+                calle = vs.jFormattedTextField2.getText();
+                codPost = Integer.parseInt(vs.jFormattedTextField3.getText());
+                ciudad = vs.jFormattedTextField4.getText();
+
+                ms.modificarSucursal(codSuc, calle, codPost, ciudad);
+
+                vs.jFormattedTextField1.setText("");
+                vs.jFormattedTextField2.setText("");
+                vs.jFormattedTextField3.setText("");
+                vs.jFormattedTextField4.setText("");
+
+                try {
+                    vs.jTable1.setModel(ms.cogerSucursalesBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 break;
         }

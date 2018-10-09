@@ -83,7 +83,6 @@ public class VistaSucursal extends javax.swing.JFrame {
         jLabel1.setBounds(460, 270, 110, 16);
 
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        jFormattedTextField1.setEnabled(false);
         getContentPane().add(jFormattedTextField1);
         jFormattedTextField1.setBounds(460, 290, 150, 20);
 
