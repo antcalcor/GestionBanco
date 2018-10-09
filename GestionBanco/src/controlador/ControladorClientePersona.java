@@ -98,9 +98,53 @@ public class ControladorClientePersona implements ActionListener, MouseListener 
 
             case AGREGAR:
 
+                int cod_cli = Integer.parseInt(vcp.jFormattedTextField1.getText());
+                String nom = vcp.jFormattedTextField2.getText();
+                String telef1 = vcp.jFormattedTextField12.getText();
+                String telef2 = vcp.jFormattedTextField13.getText();
+                String telef3 = vcp.jFormattedTextField5.getText();
+                String fecha = vcp.jFormattedTextField7.getText();
+                String sexo = vcp.jFormattedTextField3.getText();
+
+                mcp.nuevoClientePersona(cod_cli, nom, telef1, telef2, telef3, fecha, sexo);
+
+                vcp.jFormattedTextField1.setText("");
+                vcp.jFormattedTextField2.setText("");
+                vcp.jFormattedTextField12.setText("");
+                vcp.jFormattedTextField13.setText("");
+                vcp.jFormattedTextField5.setText("");
+                vcp.jFormattedTextField7.setText("");
+                vcp.jFormattedTextField3.setText("");
+
+                try {
+                    vcp.jTable1.setModel(mcp.cogerClientesPersonaBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
                 break;
 
             case BORRAR:
+
+                cod_cli = Integer.parseInt(vcp.jFormattedTextField1.getText());
+
+                mcp.borrarClientePersona(cod_cli);
+
+                vcp.jFormattedTextField1.setText("");
+                vcp.jFormattedTextField2.setText("");
+                vcp.jFormattedTextField12.setText("");
+                vcp.jFormattedTextField13.setText("");
+                vcp.jFormattedTextField5.setText("");
+                vcp.jFormattedTextField7.setText("");
+                vcp.jFormattedTextField3.setText("");
+
+                try {
+                    vcp.jTable1.setModel(mcp.cogerClientesPersonaBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
 
                 break;
 
@@ -158,12 +202,12 @@ public class ControladorClientePersona implements ActionListener, MouseListener 
                 vcp.jFormattedTextField7.setText(String.valueOf(vcp.jTable1.getValueAt(fila, 2)));
                 vcp.jFormattedTextField3.setText(String.valueOf(vcp.jTable1.getValueAt(fila, 3)));
 
-                ArrayList<Integer> prueba = mcp.cogerTelefonosBBDD(codigo,"T_PERSONA");
-                
+                ArrayList<Integer> prueba = mcp.cogerTelefonosBBDD(codigo, "T_PERSONA");
+
                 vcp.jFormattedTextField12.setText(String.valueOf(prueba.get(0)));
                 vcp.jFormattedTextField13.setText(String.valueOf(prueba.get(1)));
                 vcp.jFormattedTextField5.setText(String.valueOf(prueba.get(2)));
-                
+
             }
 
         }

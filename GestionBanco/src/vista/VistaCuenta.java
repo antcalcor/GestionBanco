@@ -108,7 +108,7 @@ public class VistaCuenta extends javax.swing.JFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(260, 290, 110, 16);
 
-        jFormattedTextField7.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        jFormattedTextField7.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         getContentPane().add(jFormattedTextField7);
         jFormattedTextField7.setBounds(450, 360, 140, 20);
 
@@ -116,7 +116,7 @@ public class VistaCuenta extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(450, 340, 80, 16);
 
-        jFormattedTextField8.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        jFormattedTextField8.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         getContentPane().add(jFormattedTextField8);
         jFormattedTextField8.setBounds(450, 310, 140, 20);
 
@@ -125,7 +125,6 @@ public class VistaCuenta extends javax.swing.JFrame {
         jLabel9.setBounds(450, 290, 110, 16);
 
         jFormattedTextField9.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        jFormattedTextField9.setEnabled(false);
         getContentPane().add(jFormattedTextField9);
         jFormattedTextField9.setBounds(70, 410, 140, 20);
 

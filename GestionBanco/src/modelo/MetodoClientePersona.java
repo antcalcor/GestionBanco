@@ -6,18 +6,85 @@
 package modelo;
 
 import db.Conexion;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author carde
  */
-public class MetodoClientePersona extends Conexion{
+public class MetodoClientePersona extends Conexion {
+
+    public void nuevoClientePersona(int cod_cli, String nom, String telef1, String telef2, String telef3, String fecha, String sexo) {
+
+        if (telef1.equals("")) {
+            telef1 = "null";
+        }
+        if (telef2.equals("")) {
+            telef2 = "null";
+        }
+        if (telef3.equals("")) {
+            telef3 = "null";
+        }
+
+        try {
+            Connection conn = this.getConnection();
+            String q = "{call INSERTAR_PERSONA (" + cod_cli + ",'" + nom + "'," + telef1 + "," + telef2 + "," + telef3 + ",'" + fecha + "','" + sexo + "')}";
+            CallableStatement storedProc = conn.prepareCall(q);
+            storedProc.execute();
+            storedProc.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
+        }
+    }
+
+    public void modificarClientePersona(int cod_cli, String nom, String telef1, String telef2, String telef3, String fecha, String sexo) {
+
+        if (telef1.equals("")) {
+            telef1 = "null";
+        }
+        if (telef2.equals("")) {
+            telef2 = "null";
+        }
+        if (telef3.equals("")) {
+            telef3 = "null";
+        }
+
+        try {
+            Connection conn = this.getConnection();
+            String q = "{call MODIFICAR_PERSONA (" + cod_cli + ",'" + nom + "'," + telef1 + "," + telef2 + "," + telef3 + ",'" + fecha + "','" + sexo + "')}";
+            CallableStatement storedProc = conn.prepareCall(q);
+            storedProc.execute();
+            storedProc.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
+        }
+    }
+
+    public void borrarClientePersona(int cod_cliente) {
+
+        try {
+            Connection conn = this.getConnection();
+            String q = "{call BORRAR_PERSONA ('" + cod_cliente + "')}";
+            CallableStatement storedProc = conn.prepareCall(q);
+            storedProc.execute();
+            storedProc.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
+        }
+    }
 
     public DefaultTableModel cogerClientesPersonaBBDD() throws SQLException {
 
@@ -55,32 +122,32 @@ public class MetodoClientePersona extends Conexion{
         tablemodel.setDataVector(datos, columnas);
         rs.close();
         ps.close();
-        
+
         return tablemodel;
 
     }
-    
-    public ArrayList cogerTelefonosBBDD(int cod_cliente,String tipo_cliente) throws SQLException{
-        
+
+    public ArrayList cogerTelefonosBBDD(int cod_cliente, String tipo_cliente) throws SQLException {
+
         String q = "SELECT TT.* FROM " + tipo_cliente + " T,TABLE (T.TELEF) TT WHERE T.COD_CLIENTE  = " + cod_cliente;
-        
-        ArrayList<Integer> tlf = new ArrayList<Integer>();       
-        
+
+        ArrayList<Integer> tlf = new ArrayList<Integer>();
+
         Connection conn = this.getConnection();
         PreparedStatement ps = conn.prepareStatement(q);
         ResultSet rs = ps.executeQuery(q);
-        
-        while(rs.next()){
-            
+
+        while (rs.next()) {
+
             tlf.add(rs.getInt(1));
-            
+
         }
-        
+
         rs.close();
         ps.close();
-        
+
         return tlf;
-        
+
     }
 
 }

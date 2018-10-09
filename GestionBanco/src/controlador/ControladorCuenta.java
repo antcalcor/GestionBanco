@@ -84,13 +84,87 @@ public class ControladorCuenta implements ActionListener, MouseListener {
 
             case AGREGAR:
 
+                int saldoAc = Integer.parseInt(vcu.jFormattedTextField8.getText());
+                int saldoM = Integer.parseInt(vcu.jFormattedTextField7.getText());
+                int cbanco = Integer.parseInt(vcu.jFormattedTextField4.getText());
+                int csucur = Integer.parseInt(vcu.jFormattedTextField3.getText());
+                int ccuenta = Integer.parseInt(vcu.jFormattedTextField9.getText());
+                int cod_client = Integer.parseInt(vcu.jFormattedTextField6.getText());
+                String tipoAmort = "CORRIENTE";
+                if (vcu.jCheckBox1.isSelected() == true) {
+                    tipoAmort = "AHORRO";
+                }
+                mcu.nuevaCuenta(saldoAc, saldoM, cbanco, csucur, ccuenta, tipoAmort, cod_client);
+
+                vcu.jFormattedTextField8.setText("");
+                vcu.jFormattedTextField7.setText("");
+                vcu.jFormattedTextField4.setText("");
+                vcu.jFormattedTextField3.setText("");
+                vcu.jFormattedTextField9.setText("");
+                vcu.jFormattedTextField6.setText("");
+                vcu.jCheckBox1.setSelected(false);
+
+                try {
+                    vcu.jTable1.setModel(mcu.cogerCuentasBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
                 break;
 
             case BORRAR:
 
+                ccuenta = Integer.parseInt(vcu.jFormattedTextField9.getText());
+
+                mcu.borrarCuenta(ccuenta);
+
+                vcu.jFormattedTextField8.setText("");
+                vcu.jFormattedTextField7.setText("");
+                vcu.jFormattedTextField4.setText("");
+                vcu.jFormattedTextField3.setText("");
+                vcu.jFormattedTextField9.setText("");
+                vcu.jFormattedTextField6.setText("");
+                vcu.jCheckBox1.setSelected(false);
+
+                try {
+                    vcu.jTable1.setModel(mcu.cogerCuentasBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
                 break;
 
             case MODIFICAR:
+
+                saldoAc = Integer.parseInt(vcu.jFormattedTextField8.getText());
+                saldoM = Integer.parseInt(vcu.jFormattedTextField7.getText());
+                cbanco = Integer.parseInt(vcu.jFormattedTextField4.getText());
+                csucur = Integer.parseInt(vcu.jFormattedTextField3.getText());
+                ccuenta = Integer.parseInt(vcu.jFormattedTextField9.getText());
+                cod_client = Integer.parseInt(vcu.jFormattedTextField6.getText());
+                tipoAmort = "CORRIENTE";
+                if (vcu.jCheckBox1.isSelected() == true) {
+                    tipoAmort = "AHORRO";
+                }
+
+                mcu.modificarCuenta(saldoAc, saldoM, cbanco, csucur, ccuenta, tipoAmort, cod_client);
+
+                vcu.jFormattedTextField8.setText("");
+                vcu.jFormattedTextField7.setText("");
+                vcu.jFormattedTextField4.setText("");
+                vcu.jFormattedTextField3.setText("");
+                vcu.jFormattedTextField9.setText("");
+                vcu.jFormattedTextField6.setText("");
+                vcu.jCheckBox1.setSelected(false);
+
+                try {
+                    vcu.jTable1.setModel(mcu.cogerCuentasBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
 
                 break;
         }
@@ -118,7 +192,7 @@ public class ControladorCuenta implements ActionListener, MouseListener {
                     vcu.jCheckBox1.setSelected(false);
 
                 }
-                
+
                 vcu.jFormattedTextField6.setText(String.valueOf((vcu.jTable1.getValueAt(fila, 6))));
 
             }

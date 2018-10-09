@@ -20,11 +20,26 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MetodoCuenta extends Conexion {
 
-        public void nuevoEmpleado(String dni, String nombre, String fecha, String sexo, int cod_sucur) {
+        public void nuevaCuenta(int saldoAc, int saldoM, int cbanco, int csucur, int ccuenta,String tipoAmort,int cod_clien) {
 
         try {
             Connection conn = this.getConnection();
-            String q = "{call INSERTAR_EMPLEADO ('" + dni + "','" + nombre + "','" + fecha + "','" + sexo + "'," + cod_sucur + ")}";
+            String q = "{call INSERTAR_CUENTA (" + saldoAc + "," + saldoM + "," + cbanco + "," + csucur + "," + ccuenta + ",'" + tipoAmort + "'," + cod_clien + ")}";
+            CallableStatement storedProc = conn.prepareCall(q);
+            storedProc.execute();
+            storedProc.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
+        }
+    }
+//A PARTIR DE AQUI TENGO QUE SEGUIR DESPUES ME PASO A PERSONA Y ORGANIZACION
+    public void modificarCuenta(int saldoAc, int saldoM, int cbanco, int csucur, int ccuenta,String tipoAmort,int cod_clien) {
+
+        try {
+            Connection conn = this.getConnection();
+            String q = "{call MODIFICAR_CUENTA (" + saldoAc + "," + saldoM + "," + cbanco + "," + csucur + "," + ccuenta + ",'" + tipoAmort + "'," + cod_clien + ")}";
             CallableStatement storedProc = conn.prepareCall(q);
             storedProc.execute();
             storedProc.close();
@@ -35,30 +50,17 @@ public class MetodoCuenta extends Conexion {
         }
     }
 
-    public void modificarEmpleado(String dni, String nombre, String fecha, String sexo, int cod_sucur) {
+    public void borrarCuenta(int cuenta) {
 
         try {
             Connection conn = this.getConnection();
-            String q = "{call MODIFICAR_EMPLEADO ('" + dni + "','" + nombre + "','" + fecha + "','" + sexo + "'," + cod_sucur + ")}";
+            String q = "{call BORRAR_CUENTA (" + cuenta + ")}";
             CallableStatement storedProc = conn.prepareCall(q);
             storedProc.execute();
             storedProc.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
-        }
-    }
-
-    public void borrarEmpleado(String dni) {
-
-        try {
-            Connection conn = this.getConnection();
-            String q = "{call BORRAR_EMPLEADO ('" + dni + "')}";
-            CallableStatement storedProc = conn.prepareCall(q);
-            storedProc.execute();
-            storedProc.close();
-
-        } catch (SQLException e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
         }
     }
