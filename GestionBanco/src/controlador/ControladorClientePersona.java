@@ -150,6 +150,31 @@ public class ControladorClientePersona implements ActionListener, MouseListener 
 
             case MODIFICAR:
 
+                cod_cli = Integer.parseInt(vcp.jFormattedTextField1.getText());
+                nom = vcp.jFormattedTextField2.getText();
+                telef1 = vcp.jFormattedTextField12.getText();
+                telef2 = vcp.jFormattedTextField13.getText();
+                telef3 = vcp.jFormattedTextField5.getText();
+                fecha = vcp.jFormattedTextField7.getText();
+                sexo = vcp.jFormattedTextField3.getText();
+
+                mcp.modificarClientePersona(cod_cli, nom, telef1, telef2, telef3, fecha, sexo);
+
+                vcp.jFormattedTextField1.setText("");
+                vcp.jFormattedTextField2.setText("");
+                vcp.jFormattedTextField12.setText("");
+                vcp.jFormattedTextField13.setText("");
+                vcp.jFormattedTextField5.setText("");
+                vcp.jFormattedTextField7.setText("");
+                vcp.jFormattedTextField3.setText("");
+
+                try {
+                    vcp.jTable1.setModel(mcp.cogerClientesPersonaBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
                 break;
 
             case DIRECCIONES:
@@ -170,13 +195,59 @@ public class ControladorClientePersona implements ActionListener, MouseListener 
 
             case AGREGAR_D:
 
+                String cal = String.valueOf(vcp.jFormattedTextField10.getText());
+                String ciudad = String.valueOf(vcp.jFormattedTextField8.getText());
+                int cod_post = Integer.parseInt(vcp.jFormattedTextField9.getText());
+
+                mDirec.nuevaDireccionPersona(codigo, cal, ciudad, cod_post);
+
+                vcp.jFormattedTextField10.setText("");
+                vcp.jFormattedTextField8.setText("");
+                vcp.jFormattedTextField9.setText("");
+
+                try {
+                    vcp.jTable3.setModel(mDirec.cogerDireccionesBBDD(codigo, "T_PERSONA"));
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorClientePersona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 break;
 
             case MODIFICAR_D:
 
+                cal = String.valueOf(vcp.jFormattedTextField10.getText());
+                ciudad = String.valueOf(vcp.jFormattedTextField8.getText());
+                cod_post = Integer.parseInt(vcp.jFormattedTextField9.getText());
+
+                mDirec.modificarDireccionPersona(codigo, cal, ciudad, cod_post);
+
+                vcp.jFormattedTextField10.setText("");
+                vcp.jFormattedTextField8.setText("");
+                vcp.jFormattedTextField9.setText("");
+
+                try {
+                    vcp.jTable3.setModel(mDirec.cogerDireccionesBBDD(codigo, "T_PERSONA"));
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorClientePersona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 break;
 
             case BORRAR_D:
+
+                String calle = String.valueOf(vcp.jFormattedTextField10.getText());
+                mDirec.borrarDireccionPersona(codigo, calle);
+
+                vcp.jFormattedTextField10.setText("");
+                vcp.jFormattedTextField8.setText("");
+                vcp.jFormattedTextField9.setText("");
+
+                try {
+                    vcp.jTable3.setModel(mDirec.cogerDireccionesBBDD(codigo, "T_PERSONA"));
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorClientePersona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 break;
 
             case VOLVER_D:

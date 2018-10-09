@@ -6,10 +6,12 @@
 package modelo;
 
 import db.Conexion;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,12 +20,77 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MetodoClienteOrg extends Conexion {
 
-    public DefaultTableModel cogerClientesOrgBBDD() throws SQLException{
+    public void nuevoClienteOrg(int cod_cli, String nom, String telef1, String telef2, String telef3, String tipo_org, String repres, int numEmple) {
+
+        if (telef1.equals("")) {
+            telef1 = "null";
+        }
+        if (telef2.equals("")) {
+            telef2 = "null";
+        }
+        if (telef3.equals("")) {
+            telef3 = "null";
+        }
+
+        try {
+            Connection conn = this.getConnection();
+            String q = "{call INSERTAR_ORG (" + cod_cli + ",'" + nom + "'," + telef1 + "," + telef2 + "," + telef3 + ",'" + tipo_org + "','" + repres + "'," + numEmple + ")}";
+            CallableStatement storedProc = conn.prepareCall(q);
+            storedProc.execute();
+            storedProc.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
+        }
+    }
+
+    public void modificarClienteOrg(int cod_cli, String nom, String telef1, String telef2, String telef3, String tipo_org, String repres, int numEmple) {
+
+        if (telef1.equals("")) {
+            telef1 = "null";
+        }
+        if (telef2.equals("")) {
+            telef2 = "null";
+        }
+        if (telef3.equals("")) {
+            telef3 = "null";
+        }
+
+        try {
+            Connection conn = this.getConnection();
+            String q = "{call MODIFICAR_ORG (" + cod_cli + ",'" + nom + "'," + telef1 + "," + telef2 + "," + telef3 + ",'" + tipo_org + "','" + repres + "'," + numEmple + ")}";
+            CallableStatement storedProc = conn.prepareCall(q);
+            storedProc.execute();
+            storedProc.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
+        }
+    }
+
+    public void borrarClienteOrg(int cod_cliente) {
+
+        try {
+            Connection conn = this.getConnection();
+            String q = "{call BORRAR_ORG ('" + cod_cliente + "')}";
+            CallableStatement storedProc = conn.prepareCall(q);
+            storedProc.execute();
+            storedProc.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Hay valores incorrectos");
+        }
+    }
+
+    public DefaultTableModel cogerClientesOrgBBDD() throws SQLException {
 
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection conn = this.getConnection();
-        String[] columnas = {"Codigo Cliente", "Nombre", "Tipo Organizacion", "Representante","Numero Empleados"};
+        String[] columnas = {"Codigo Cliente", "Nombre", "Tipo Organizacion", "Representante", "Numero Empleados"};
         DefaultTableModel tablemodel = new DefaultTableModel();
 
         int i = 0;
@@ -55,7 +122,7 @@ public class MetodoClienteOrg extends Conexion {
         tablemodel.setDataVector(datos, columnas);
         rs.close();
         ps.close();
-        
+
         return tablemodel;
 
     }

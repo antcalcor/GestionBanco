@@ -99,13 +99,87 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
 
             case AGREGAR:
 
+                int cod_cli = Integer.parseInt(vco.jFormattedTextField1.getText());
+                String nom = vco.jFormattedTextField2.getText();
+                String telef1 = vco.jFormattedTextField12.getText();
+                String telef2 = vco.jFormattedTextField13.getText();
+                String telef3 = vco.jFormattedTextField5.getText();
+                String tipo_org = vco.jFormattedTextField4.getText();
+                String repres = vco.jFormattedTextField6.getText();
+                int numEmple = Integer.parseInt(vco.jFormattedTextField11.getText());
+
+                mco.nuevoClienteOrg(cod_cli, nom, telef1, telef2, telef3, tipo_org, repres, numEmple);
+
+                vco.jFormattedTextField1.setText("");
+                vco.jFormattedTextField2.setText("");
+                vco.jFormattedTextField12.setText("");
+                vco.jFormattedTextField13.setText("");
+                vco.jFormattedTextField5.setText("");
+                vco.jFormattedTextField4.setText("");
+                vco.jFormattedTextField6.setText("");
+                vco.jFormattedTextField11.setText("");
+
+                try {
+                    vco.jTable1.setModel(mco.cogerClientesOrgBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
                 break;
 
             case BORRAR:
 
+                cod_cli = Integer.parseInt(vco.jFormattedTextField1.getText());
+
+                mco.borrarClienteOrg(cod_cli);
+
+                vco.jFormattedTextField1.setText("");
+                vco.jFormattedTextField2.setText("");
+                vco.jFormattedTextField12.setText("");
+                vco.jFormattedTextField13.setText("");
+                vco.jFormattedTextField5.setText("");
+                vco.jFormattedTextField4.setText("");
+                vco.jFormattedTextField6.setText("");
+                vco.jFormattedTextField11.setText("");
+
+                try {
+                    vco.jTable1.setModel(mco.cogerClientesOrgBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
                 break;
 
             case MODIFICAR:
+
+                cod_cli = Integer.parseInt(vco.jFormattedTextField1.getText());
+                nom = vco.jFormattedTextField2.getText();
+                telef1 = vco.jFormattedTextField12.getText();
+                telef2 = vco.jFormattedTextField13.getText();
+                telef3 = vco.jFormattedTextField5.getText();
+                tipo_org = vco.jFormattedTextField4.getText();
+                repres = vco.jFormattedTextField6.getText();
+                numEmple = Integer.parseInt(vco.jFormattedTextField11.getText());
+
+                mco.modificarClienteOrg(cod_cli, nom, telef1, telef2, telef3, tipo_org, repres, numEmple);
+
+                vco.jFormattedTextField1.setText("");
+                vco.jFormattedTextField2.setText("");
+                vco.jFormattedTextField12.setText("");
+                vco.jFormattedTextField13.setText("");
+                vco.jFormattedTextField5.setText("");
+                vco.jFormattedTextField4.setText("");
+                vco.jFormattedTextField6.setText("");
+                vco.jFormattedTextField11.setText("");
+
+                try {
+                    vco.jTable1.setModel(mco.cogerClientesOrgBBDD());
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorSucursal.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
 
                 break;
 
@@ -124,15 +198,62 @@ public class ControladorClienteOrg implements ActionListener, MouseListener {
                 }
 
                 break;
+
             case AGREGAR_D:
+
+                String cal = String.valueOf(vco.jFormattedTextField10.getText());
+                String ciudad = String.valueOf(vco.jFormattedTextField8.getText());
+                int cod_post = Integer.parseInt(vco.jFormattedTextField9.getText());
+
+                mDirec.nuevaDireccionOrg(codigo, cal, ciudad, cod_post);
+
+                vco.jFormattedTextField10.setText("");
+                vco.jFormattedTextField8.setText("");
+                vco.jFormattedTextField9.setText("");
+
+                try {
+                    vco.jTable3.setModel(mDirec.cogerDireccionesBBDD(codigo, "T_ORGANIZACION"));
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorClientePersona.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 break;
 
             case MODIFICAR_D:
 
+                cal = String.valueOf(vco.jFormattedTextField10.getText());
+                ciudad = String.valueOf(vco.jFormattedTextField8.getText());
+                cod_post = Integer.parseInt(vco.jFormattedTextField9.getText());
+
+                mDirec.modificarDireccionOrg(codigo, cal, ciudad, cod_post);
+
+                vco.jFormattedTextField10.setText("");
+                vco.jFormattedTextField8.setText("");
+                vco.jFormattedTextField9.setText("");
+
+                try {
+                    vco.jTable3.setModel(mDirec.cogerDireccionesBBDD(codigo, "T_ORGANIZACION"));
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorClientePersona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 break;
 
             case BORRAR_D:
+
+                String calle = String.valueOf(vco.jFormattedTextField10.getText());
+                mDirec.borrarDireccionOrg(codigo, calle);
+
+                vco.jFormattedTextField10.setText("");
+                vco.jFormattedTextField8.setText("");
+                vco.jFormattedTextField9.setText("");
+
+                try {
+                    vco.jTable3.setModel(mDirec.cogerDireccionesBBDD(codigo, "T_ORGANIZACION"));
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorClientePersona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 break;
 
             case VOLVER_D:
